@@ -9,13 +9,36 @@ import org.junit.jupiter.api.Test;
 public class HelloWorldApiTest {
     String url = "https://sandbox.api.service.nhs.uk/hello-world/hello/world";
 
+    /**
+     * When user sends GET Request to :
+     * https://sandbox.api.service.nhs.uk/hello-world/hello/world
+     * <p>
+     * Then status code should be 200
+     * And "Hello World!" message should be in the response
+     */
+
     @DisplayName("Hello World GET request")
     @Test
-    public void helloWorldGetRequestTest(){
+    public void helloWorldGetRequestTest() {
         //send a get request and save response inside the Response object
         Response response = RestAssured.get(url);
 
+        //prints response body in a formatted way
         response.prettyPrint();
+
+        //print status code
+        System.out.println("Status code: " + response.statusCode());
+        System.out.println("Status line: " + response.statusLine());
+
+        //assert that status code is 200
+        Assertions.assertEquals(200, response.statusCode());
+
+        //declare status code variable and assign the response status code then assert
+        int statusCode = response.statusCode();
+        Assertions.assertEquals(200, statusCode);
+
+        //And "Hello World!" message should be in the response body
+        Assertions.assertTrue(response.asString().contains("Hello World"));
 
     }
 
