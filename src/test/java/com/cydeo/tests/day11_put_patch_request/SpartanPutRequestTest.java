@@ -1,12 +1,9 @@
 package com.cydeo.tests.day11_put_patch_request;
 
-import com.cydeo.utils.*;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import io.restassured.http.ContentType;
-import org.junit.jupiter.api.DisplayName;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,19 +11,10 @@ import java.util.Map;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import com.cydeo.utils.SpartanRestUtils;
+
 import com.cydeo.utils.SpartanTestBase;
-import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import io.restassured.http.ContentType;
-import org.junit.jupiter.api.DisplayName;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class SpartanPutRequest extends SpartanTestBase {
+public class SpartanPutRequestTest extends SpartanTestBase {
     /**
      * Given accept type is json
      * And content type is json
@@ -57,6 +45,7 @@ public class SpartanPutRequest extends SpartanTestBase {
 
         response.prettyPrint();
         System.out.println("status code = " + response.statusCode());
+        System.out.println("response.statusLine() = " + response.statusLine());
         assertThat(response.statusCode(), is(204));
     }
 
